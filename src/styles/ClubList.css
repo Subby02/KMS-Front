@@ -1,0 +1,21 @@
+/* styles/ClubList.css */
+.club-list {
+  margin-top: 30px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.club-list h2 {
+  margin-bottom: 15px;
+}
+
+.club-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.club-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
