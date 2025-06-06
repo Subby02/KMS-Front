@@ -1,0 +1,130 @@
+/* EducationForm.css */
+
+.form-container {
+    max-width: 1200px; /* 양쪽으로 나뉘므로 최대 너비를 넓혀줍니다. */
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  /* --- 추가된 부분 --- */
+  .form-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2개의 컬럼을 동일한 너비로 설정 */
+    gap: 2rem; /* 컬럼 사이의 간격 */
+    margin-bottom: 2rem;
+  }
+  
+  .form-column {
+    display: flex;
+    flex-direction: column;
+  }
+  /* --- 여기까지 --- */
+  
+  
+  /* 기존 form 요소들 스타일링 */
+  .form-column label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .form-column input[type="text"],
+  .form-column input[type="number"],
+  .form-column input[type="date"],
+  .form-column select,
+  .form-column textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem; /* 각 입력 필드 사이의 간격 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* 패딩과 보더가 너비에 포함되도록 설정 */
+    font-size: 1rem;
+  }
+  
+  .form-column textarea {
+    min-height: 100px; /* 설명란의 최소 높이 */
+    resize: vertical; /* 수직으로만 크기 조절 가능 */
+  }
+  
+  .submit-button {
+    width: 100%; /* 버튼이 전체 너비를 차지하도록 설정 */
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+
+  .form-column .form-group.date-range {
+    /* margin-bottom을 form-group에 적용하여 일관성 유지 */
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-column .form-group.date-range label {
+    /* 라벨은 이미 스타일링 되어 있으므로 그대로 둡니다. */
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-column .form-group.date-range div {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 입력창과 '~' 기호 사이의 간격 */
+  }
+  
+  /* date-range 내부의 input은 부모 form-group의 margin-bottom을 따르므로 개별 margin-bottom 제거 */
+  .form-column .form-group.date-range input {
+    margin-bottom: 0;
+  }
+  
+  
+  /* 모달 스타일은 그대로 유지 */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 300px;
+  }
+  
+  .modal-content p {
+    margin-bottom: 20px;
+  }
+  
+  .success-message {
+    color: green;
+  }
+  
+  .error-message {
+    color: red;
+  }
