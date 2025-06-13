@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
@@ -8,10 +7,12 @@ import EnrolEducationPage from "./pages/educationPage/EnrolEducationPage.jsx";
 import SearchEducationPage from "./pages/educationPage/SearchEducationPage.jsx";
 import RegisterTaskPage from "./pages/taskPage/RegisterTaskPage.jsx";
 import SearchTaskPage from "./pages/taskPage/SearchTaskPage.jsx";
+import Header from "./components/Header";
 
 const App = () => {
   return (
     <div className="app-container">
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />

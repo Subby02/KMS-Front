@@ -1,31 +1,11 @@
-// src/pages/Home.jsx
 import React from "react";
-import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>homepage</h1>
-      <div>
-        <Link to="/register">
-          <button style={{ marginRight: "10px" }}>동아리 등록</button>
-        </Link>
-        <Link to="/search">
-          <button style={{ marginRight: "10px" }}>동아리 조회</button>
-        </Link>
-        <Link to="/education/enrol">
-          <button style={{ marginRight: "10px" }}>교육 등록</button>
-        </Link>
-        <Link to="/education/search">
-          <button style={{ marginRight: "10px" }}>교육 검색</button>
-        </Link>
-        <Link to="/task/register">
-          <button style={{ marginRight: "10px" }}>업무 등록</button>
-        </Link>
-        <Link to="/task/search">
-          <button style={{ marginRight: "10px" }}>업무 검색</button>
-        </Link>
-      </div>
+    <div
+      style={{ padding: "20px", position: "fixed", top: "20px", left: "20px" }}
+    >
+      <h1 style={{ margin: 0, fontSize: "24px" }}>홈페이지</h1>
     </div>
   );
 };
