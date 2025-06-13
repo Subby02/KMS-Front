@@ -12,7 +12,7 @@ const menuItems = {
   ],
   업무: [
     { label: "업무 등록", path: "/task/register" },
-    { label: "업무 검색", path: "/task/search" },
+    { label: "업무 조회", path: "/task/search" },
   ],
 };
 
