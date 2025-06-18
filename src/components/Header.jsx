@@ -11,8 +11,8 @@ const menuItems = {
     { label: "문서 조회", path: "#" },
   ],
   일정: [
-    { label: "일정 등록", path: "#" },
-    { label: "일정 조회", path: "#" },
+    { label: "일정 등록", path: "/schedule/register" },
+    { label: "일정 조회", path: "/schedule/view" },
   ],
   업무: [
     { label: "업무 등록", path: "/task/register" },

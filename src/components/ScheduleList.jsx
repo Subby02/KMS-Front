@@ -1,13 +1,14 @@
 import React from 'react';
-import '../styles/ScheduleView.css'; 
-const ScheduleList = ({ schedules }) => {
+import '../styles/ScheduleList.css';
+
+const ScheduleList = ({ schedules, onSelect }) => {
   if (schedules.length === 0)
-    return <p style={{ color: 'red', textAlign: 'center' }}>조회된 일정이 없습니다.</p>;
+    return <p className="no-schedule">조회된 일정이 없습니다.</p>;
 
   return (
-    <div style={{ marginTop: '20px' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center' }}>
-        <thead style={{ backgroundColor: '#f0f0f0' }}>
+    <div className="schedule-list-wrapper">
+      <table className="schedule-table">
+        <thead>
           <tr>
             <th>제목</th>
             <th>시작일</th>
@@ -17,11 +18,11 @@ const ScheduleList = ({ schedules }) => {
         </thead>
         <tbody>
           {schedules.map(s => (
-            <tr key={s.scheduleId}>
+            <tr key={s.scheduleId} onClick={() => onSelect?.(s)}>
               <td>{s.title}</td>
-              <td>{s.startDateTime}</td>
-              <td>{s.endDateTime}</td>
-              <td style={{ color: s.priority === 2 ? 'red' : s.priority === 1 ? 'orange' : 'black' }}>
+              <td>{s.startDateTime.replace('T', ' ')}</td>
+              <td>{s.endDateTime.replace('T', ' ')}</td>
+              <td className={`priority-${s.priority}`}>
                 {['하', '중', '상'][s.priority]}
               </td>
             </tr>
