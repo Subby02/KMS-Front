@@ -7,6 +7,8 @@ import EnrolEducationPage from "./pages/educationPage/EnrolEducationPage.jsx";
 import SearchEducationPage from "./pages/educationPage/SearchEducationPage.jsx";
 import RegisterTaskPage from "./pages/taskPage/RegisterTaskPage.jsx";
 import SearchTaskPage from "./pages/taskPage/SearchTaskPage.jsx";
+import CircleFormPage   from './pages/circlePage/RegisterPage';
+import CircleSearchPage from './pages/circlePage/SearchPage';
 import Header from "./components/Header";
 
 const App = () => {
@@ -21,6 +23,8 @@ const App = () => {
         <Route path="/education/search" element={<SearchEducationPage />} />
         <Route path="/task/register" element={<RegisterTaskPage />} />
         <Route path="/task/search" element={<SearchTaskPage />} />
+        <Route path="/circle/register" element={<CircleFormPage />} />
+        <Route path="/circle/search"   element={<CircleSearchPage />} />
       </Routes>
     </div>
   );

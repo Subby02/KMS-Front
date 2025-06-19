@@ -27,8 +27,8 @@ const menuItems = {
     { label: "동아리 조회", path: "/search" },
   ],
   동호회: [
-    { label: "동호회 등록", path: "#" },
-    { label: "동호회 조회", path: "#" },
+    { label: "동호회 등록", path: "/circle/register" },
+    { label: "동호회 조회", path: "/circle/search" },
   ],
 };
 

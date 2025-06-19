@@ -1,0 +1,106 @@
+.circle-form-container {
+  font-family: Arial, sans-serif;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.circle-form-container form {
+  text-align: left;
+}
+
+.circle-form-container label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.circle-form-container input[type="text"],
+.circle-form-container textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.circle-form-container textarea {
+  resize: vertical;
+  height: 80px;
+}
+
+.circle-form-container button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.circle-form-container button:hover {
+  background-color: #0056b3;
+}
+
+.modal {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+
+  /* 모달 표시를 위해 flex로 중앙 정렬 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-content.success {
+  border: 3px solid #2d662d;
+  color: #2d662d;
+}
+
+.modal-content.error {
+  border: 3px solid #cc0000;
+  color: #cc0000;
+}
+
+.close-btn {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.close-btn:hover {
+  background-color: #0056b3;
+}
