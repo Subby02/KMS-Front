@@ -137,11 +137,11 @@ const EducationSearch = () => {
       <div className="results-container">
         <h3>검색 결과</h3>
         {isLoading && <p>결과를 불러오는 중입니다...</p>}
-        {/* hasSearched를 사용하던 로직이 없으므로 이 부분은 깔끔하게 유지됩니다. */}
         {!isLoading && results.length > 0 && (
           <table className="results-table">
             <thead>
               <tr>
+                <th>썸네일</th> {/* 썸네일 컬럼 추가 */}
                 <th>교육 이름</th>
                 <th>유형</th>
                 <th>장소</th>
@@ -153,6 +153,17 @@ const EducationSearch = () => {
             <tbody>
               {results.map(edu => (
                 <tr key={edu.eduId}>
+                  <td>
+                    {edu.thumbnailPath ? (
+                      <img
+                        src={edu.thumbnailPath}
+                        alt={`${edu.eduName} 썸네일`}
+                        className="thumbnail-preview" // CSS 클래스 추가
+                      />
+                    ) : (
+                      <span>N/A</span> // 썸네일이 없을 경우 표시
+                    )}
+                  </td>
                   <td>{edu.eduName}</td>
                   <td>{edu.eduType}</td>
                   <td>{edu.eduLocation}</td>
@@ -164,6 +175,7 @@ const EducationSearch = () => {
             </tbody>
           </table>
         )}
+        {!isLoading && results.length === 0 && <p>검색 조건에 맞는 결과가 없습니다.</p>} {/* 결과 없을 때 메시지 표시 */}
       </div>
 
       {modalOpen && (
