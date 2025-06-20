@@ -2,6 +2,7 @@ import React from "react";
 
 const HomePage = () => {
   return (
+
     <div
       style={{ padding: "20px", position: "fixed", top: "20px", left: "20px" }}
     >

@@ -8,6 +8,8 @@ import SearchEducationPage from "./pages/educationPage/SearchEducationPage.jsx";
 import RegisterTaskPage from "./pages/taskPage/RegisterTaskPage.jsx";
 import SearchTaskPage from "./pages/taskPage/SearchTaskPage.jsx";
 import Header from "./components/Header";
+import ScheduleRegisterPage from "./pages/schedulePage/ScheduleRegisterPage.jsx";
+import ScheduleViewPage from "./pages/schedulePage/ScheduleViewPage.jsx";
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
         <Route path="/education/search" element={<SearchEducationPage />} />
         <Route path="/task/register" element={<RegisterTaskPage />} />
         <Route path="/task/search" element={<SearchTaskPage />} />
+        <Route path="/schedule/register" element={<ScheduleRegisterPage />} />
+        <Route path="/schedule/view" element={<ScheduleViewPage />} />
       </Routes>
     </div>
   );
