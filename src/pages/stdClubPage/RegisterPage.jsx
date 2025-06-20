@@ -12,7 +12,6 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <h2>동아리 등록</h2>
       <ClubForm onAddClub={handleAddClub} />
     </div>
   );

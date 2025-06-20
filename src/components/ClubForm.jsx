@@ -7,15 +7,39 @@ const ClubForm = () => {
   const [description, setDescription] = useState('');
   const [modalType, setModalType] = useState(null); 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!clubName.trim() || !managerName.trim()) {
+    if ( !clubName.trim() || !managerName.trim()|| !description.trim()) {
       setModalType('error');
-    } else {
-      setModalType('success');
-      setClubName('');
-      setManagerName('');
-      setDescription('');
+      return;
+    }
+
+    const requestBody = {
+      stdClubName: clubName,
+      stdClubInfo: description,
+      stdClubManagerName: managerName,
+    };
+
+    try {
+      const response = await fetch('http://localhost:8080/stdClub', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (response.ok) {
+        setModalType('success');
+        setClubName('');
+        setManagerName('');
+        setDescription('');
+      } else {
+        setModalType('error');
+      }
+    } catch (error) {
+      console.error('API 호출 오류:', error);
+      setModalType('error');
     }
   };
 
@@ -25,6 +49,7 @@ const ClubForm = () => {
     <div className="form-container">
       <h2>학습동아리 등록</h2>
       <form onSubmit={handleSubmit}>
+
         <label>학습동아리명</label>
         <input
           type="text"
@@ -32,7 +57,7 @@ const ClubForm = () => {
           onChange={(e) => setClubName(e.target.value)}
         />
 
-        <label>학습동아리 관리자명</label>
+        <label>관리자 이름</label>
         <input
           type="text"
           value={managerName}
@@ -51,7 +76,7 @@ const ClubForm = () => {
       {modalType && (
         <div className="modal-overlay" onClick={closeModal}>
           <div
-            className={`modal-content ${modalType}`}
+            className={`modal-content`}
             onClick={(e) => e.stopPropagation()}
           >
             <p>

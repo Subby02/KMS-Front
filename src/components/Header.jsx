@@ -23,8 +23,8 @@ const menuItems = {
     { label: "교육 검색", path: "/education/search" },
   ],
   동아리: [
-    { label: "동아리 등록", path: "/register" },
-    { label: "동아리 조회", path: "/search" },
+    { label: "동아리 등록", path: "/stdClub/register" },
+    { label: "동아리 조회", path: "/stdClub/search" },
   ],
   동호회: [
     { label: "동호회 등록", path: "#" },
