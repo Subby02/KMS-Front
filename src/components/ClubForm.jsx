@@ -5,12 +5,15 @@ const ClubForm = () => {
   const [clubName, setClubName] = useState('');
   const [managerName, setManagerName] = useState('');
   const [description, setDescription] = useState('');
-  const [modalType, setModalType] = useState(null); 
+  const [modalType, setModalType] = useState(null);
+  const [modalMessage, setModalMessage] = useState(''); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if ( !clubName.trim() || !managerName.trim()|| !description.trim()) {
+
+    if (!clubName.trim() || !managerName.trim() ) {
       setModalType('error');
+      setModalMessage('필수 입력 정보를 모두 입력하세요.'); 
       return;
     }
 
@@ -31,25 +34,30 @@ const ClubForm = () => {
 
       if (response.ok) {
         setModalType('success');
+        setModalMessage('학습동아리 등록에 성공했습니다.');
         setClubName('');
         setManagerName('');
         setDescription('');
       } else {
         setModalType('error');
+        setModalMessage('학습동아리 등록에 실패했습니다.'); 
       }
     } catch (error) {
       console.error('API 호출 오류:', error);
       setModalType('error');
+      setModalMessage('학습동아리 등록에 실패했습니다.'); 
     }
   };
 
-  const closeModal = () => setModalType(null);
+  const closeModal = () => {
+    setModalType(null);
+    setModalMessage('');
+  };
 
   return (
     <div className="form-container">
       <h2>학습동아리 등록</h2>
       <form onSubmit={handleSubmit}>
-
         <label>학습동아리명</label>
         <input
           type="text"
@@ -75,15 +83,8 @@ const ClubForm = () => {
 
       {modalType && (
         <div className="modal-overlay" onClick={closeModal}>
-          <div
-            className={`modal-content`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <p>
-              {modalType === 'success'
-                ? '학습동아리 등록에 성공했습니다.'
-                : '필수 입력 정보를 모두 입력하세요.'}
-            </p>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <p>{modalMessage}</p>
             <button onClick={closeModal}>닫기</button>
           </div>
         </div>
@@ -93,3 +94,7 @@ const ClubForm = () => {
 };
 
 export default ClubForm;
+
+ 
+
+
