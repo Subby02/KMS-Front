@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 const EmployeeSearch = () => {
@@ -5,27 +6,37 @@ const EmployeeSearch = () => {
   const [result, setResult] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  // 샘플 데이터 (테스트용)
-  const sample = {
-    empId: "emp01",
-    name: "홍길동",
-    dept: "총무과",
-    phone: "010-1234-5678",
-    email: "emp01@naver.com",
-    status: "재직",
-    regDate: "2025-06-21",
-  };
+ const handleSearch = async () => {
+    try {
+      // ID 기준 검색
+      const idResponse = await fetch(`http://localhost:8080/employees/${query}`);
+      if (idResponse.ok) {
+        const data = await idResponse.json();
+        setResult(data);
+        setShowModal(false);
+        return;
+      }
 
-  const handleSearch = () => {
-    if (query === sample.empId || query === sample.name) {
-      setResult(sample);
-      setShowModal(false);
-    } else {
-      setResult(null);
-      setShowModal(true);
+      // 이름 기준 검색
+      const nameResponse = await fetch(`http://localhost:8080/employees/search?name=${query}`);
+      if (nameResponse.ok) {
+        const dataList = await nameResponse.json();
+        if (dataList.length > 0) {
+          setResult(dataList[0]);
+          setShowModal(false);
+        } else {
+          setResult(null);
+          setShowModal(true);
+        }
+      } else {
+        setResult(null);
+        setShowModal(true);
+      }
+    } catch (error) {
+      alert("서버 통신 오류 발생");
+      console.error(error);
     }
   };
-
   return (
     <>
       <form onSubmit={(e) => e.preventDefault()} style={styles.form}>
