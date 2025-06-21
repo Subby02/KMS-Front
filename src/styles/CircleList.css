@@ -1,0 +1,52 @@
+.search-page {
+  font-family: Arial, sans-serif;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.search-page h2 {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.search-page input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.circle-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.circle-list li {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.circle-list li h3 {
+  margin: 0 0 5px;
+}
+
+.circle-list li p {
+  margin: 0;
+  color: #555;
+}
+
+.no-results {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  display: none;
+}
