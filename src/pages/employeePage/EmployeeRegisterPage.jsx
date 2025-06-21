@@ -1,6 +1,6 @@
 import React from "react";
 import EmployeeForm from "../../components/EmployeeForm";
-import "../../styles/EmployeeRegister.css";  
+import "../../styles/EmployeeForm.css";  
 
 const EmployeeRegisterPage = () => {
   return (
