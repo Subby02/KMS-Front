@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../styles/EmployeeForm.css';
 
 const EmployeeForm = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +10,9 @@ const EmployeeForm = () => {
     phone: "",
     email: "",
     status: "재직",
-    regDate: "자동 생성",
+    regDate: new Date().getFullYear() + '-' +
+           String(new Date().getMonth() + 1).padStart(2, '0') + '-' +
+           String(new Date().getDate()).padStart(2, '0'),
   });
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -41,13 +44,12 @@ const EmployeeForm = () => {
       return;
     }
 
-    // 모든 검사를 통과한 경우
     setShowSuccessModal(true);
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <form onSubmit={handleSubmit} className="employee-form-container">
         <label htmlFor="empId">아이디</label>
         <input type="text" id="empId" name="empId" value={formData.empId} onChange={handleChange} />
 
