@@ -1,17 +1,12 @@
 import React from "react";
 import EmployeeForm from "../../components/EmployeeForm";
+import "../../styles/EmployeeRegister.css";  
 
 const EmployeeRegisterPage = () => {
   return (
-    <div style={{
-      display: "flex", justifyContent: "center", alignItems: "flex-start",
-      minHeight: "100vh", padding: "20px"
-    }}>
-      <div style={{
-        width: "100%", maxWidth: "640px", backgroundColor: "#fff",
-        padding: "32px", borderRadius: "10px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)"
-      }}>
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>직원 가입</h2>
+    <div className="register-page-wrapper">
+      <div className="register-page-container">
+        <h2 className="register-page-title">직원 가입</h2>
         <EmployeeForm />
       </div>
     </div>
@@ -19,3 +14,4 @@ const EmployeeRegisterPage = () => {
 };
 
 export default EmployeeRegisterPage;
+
