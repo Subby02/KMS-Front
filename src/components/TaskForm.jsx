@@ -1,116 +1,125 @@
 import React, { useState } from "react";
 import "../styles/TaskForm.css";
 
-export default function TaskForm() {
-  const [formData, setFormData] = useState({
-    userId: "",
-    title: "",
-    startDate: "",
-    endDate: "",
-    alarm: "true",
-    public: "true",
-  });
-  const [modalOpen, setModalOpen] = useState(false);
+const TaskForm = () => {
+  const [title, setTitle] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [alarmSet, setAlarmSet] = useState("true");
+  const [visibleSet, setVisibleSet] = useState("true");
+  const [modalType, setModalType] = useState(null);
+  const [modalMessage, setModalMessage] = useState("");
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  }
-
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setModalOpen(true);
-    setFormData({
-      userId: "",
-      title: "",
-      startDate: "",
-      endDate: "",
-      alarm: "true",
-      public: "true",
-    });
-  }
 
-  function closeModal() {
-    setModalOpen(false);
-  }
+    // 필수값 체크
+    if (!title.trim() || !startDate.trim()) {
+      setModalType("error");
+      setModalMessage("제목과 시작일은 필수 입력입니다.");
+      return;
+    }
+
+    const requestBody = {
+      title: title.trim(),
+      startDate, // "yyyy-MM-dd" 문자열
+      endDate: endDate ? endDate : null, // 빈 문자열이면 null로 보내도 무방
+      alarmSet: alarmSet === "true",
+      visibleSet: visibleSet === "true",
+      // userId는 보내지 않음. 백엔드에서 자동 "T001"로 설정함.
+    };
+
+    try {
+      const response = await fetch("http://localhost:8080/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (response.ok) {
+        setModalType("success");
+        setModalMessage("업무가 성공적으로 등록되었습니다.");
+        // 폼 초기화
+        setTitle("");
+        setStartDate("");
+        setEndDate("");
+        setAlarmSet("true");
+        setVisibleSet("true");
+      } else {
+        // 서버가 보낸 에러 메시지 받아오기
+        const errorText = await response.text();
+        setModalType("error");
+        setModalMessage(`등록 실패: ${errorText}`);
+      }
+    } catch (err) {
+      console.error("API 호출 오류:", err);
+      setModalType("error");
+      setModalMessage("업무 등록 중 오류가 발생했습니다.");
+    }
+  };
+
+  const closeModal = () => {
+    setModalType(null);
+    setModalMessage("");
+  };
 
   return (
-    <div className="container">
-      <h1>업무 등록</h1>
-      <form onSubmit={handleSubmit} className="form">
-        <label htmlFor="userId">유저 아이디</label>
+    <div className="form-container">
+      <h2>업무 등록</h2>
+      <form onSubmit={handleSubmit}>
+        <label>제목</label>
         <input
           type="text"
-          id="userId"
-          name="userId"
-          value={formData.userId}
-          onChange={handleChange}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           required
         />
 
-        <label htmlFor="title">제목</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-        />
-
-        <label htmlFor="startDate">시작일</label>
+        <label>시작일</label>
         <input
           type="date"
-          id="startDate"
-          name="startDate"
-          value={formData.startDate}
-          onChange={handleChange}
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
           required
         />
 
-        <label htmlFor="endDate">종료일</label>
+        <label>종료일</label>
         <input
           type="date"
-          id="endDate"
-          name="endDate"
-          value={formData.endDate}
-          onChange={handleChange}
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
         />
 
-        <label htmlFor="alarm">알림 설정</label>
-        <select
-          id="alarm"
-          name="alarm"
-          value={formData.alarm}
-          onChange={handleChange}
-        >
+        <label>알림 설정</label>
+        <select value={alarmSet} onChange={(e) => setAlarmSet(e.target.value)}>
           <option value="true">설정함</option>
-          <option value="false">설정안함</option>
+          <option value="false">설정 안 함</option>
         </select>
 
-        <label htmlFor="public">공개 설정</label>
+        <label>공개 설정</label>
         <select
-          id="public"
-          name="public"
-          value={formData.public}
-          onChange={handleChange}
+          value={visibleSet}
+          onChange={(e) => setVisibleSet(e.target.value)}
         >
           <option value="true">공개</option>
           <option value="false">비공개</option>
         </select>
 
-        <button type="submit">업무 등록</button>
+        <button type="submit">등록</button>
       </form>
 
-      {modalOpen && (
-        <div className="modal">
-          <div className="modalContent">
-            <p>✅ 업무가 등록되었습니다!</p>
-            <button className="closeBtn" onClick={closeModal}>
-              닫기
-            </button>
+      {modalType && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <p>{modalMessage}</p>
+            <button onClick={closeModal}>닫기</button>
           </div>
         </div>
       )}
     </div>
   );
-}
+};
+
+export default TaskForm;
