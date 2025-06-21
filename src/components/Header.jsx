@@ -11,8 +11,8 @@ const menuItems = {
     { label: "문서 조회", path: "#" },
   ],
   일정: [
-    { label: "일정 등록", path: "#" },
-    { label: "일정 조회", path: "#" },
+    { label: "일정 등록", path: "/schedule/register" },
+    { label: "일정 조회", path: "/schedule/view" },
   ],
   업무: [
     { label: "업무 등록", path: "/task/register" },
@@ -23,8 +23,8 @@ const menuItems = {
     { label: "교육 검색", path: "/education/search" },
   ],
   동아리: [
-    { label: "동아리 등록", path: "/register" },
-    { label: "동아리 조회", path: "/search" },
+    { label: "동아리 등록", path: "/stdClub/register" },
+    { label: "동아리 조회", path: "/stdClub/search" },
   ],
   동호회: [
     { label: "동호회 등록", path: "/circle/register" },

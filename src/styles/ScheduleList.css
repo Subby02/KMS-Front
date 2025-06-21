@@ -1,0 +1,38 @@
+.schedule-list-wrapper {
+    margin-top: 20px;
+  }
+  
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .schedule-table th, .schedule-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .schedule-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  .priority-2 {
+    color: red;
+    font-weight: bold;
+  }
+  .priority-1 {
+    color: orange;
+  }
+  .priority-0 {
+    color: black;
+  }
+  
+  .no-schedule {
+    color: gray;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

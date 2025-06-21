@@ -1,0 +1,56 @@
+.calendar-wrapper {
+    margin-top: 20px;
+    max-width: 100%;
+  }
+  
+  .cal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .calendar {
+    width: 100%;
+    table-layout: fixed; /* ✅ 고정 너비 */
+    border-collapse: collapse;
+  }
+  
+  .calendar th, .calendar td {
+    border: 1px solid #ccc;
+    text-align: left;
+    vertical-align: top;
+    height: 100px; /* ✅ 셀 높이 고정 */
+    padding: 5px;
+    position: relative;
+  }
+  
+  .cell {
+    background-color: #fff;
+  }
+  
+  .empty {
+    background-color: #f8f8f8;
+  }
+  
+  .date {
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .event {
+    background-color: #d9e8ff;
+    margin-top: 4px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #004085;
+    white-space: nowrap;        /* ✅ 한 줄로 고정 */
+    overflow: hidden;           /* ✅ 넘치는 텍스트 숨김 */
+    text-overflow: ellipsis;    /* ✅ 말줄임 처리 */
+    cursor: pointer;
+  }
+  

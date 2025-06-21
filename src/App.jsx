@@ -10,6 +10,8 @@ import SearchTaskPage from "./pages/taskPage/SearchTaskPage.jsx";
 import CircleFormPage   from './pages/circlePage/RegisterPage';
 import CircleSearchPage from './pages/circlePage/SearchPage';
 import Header from "./components/Header";
+import ScheduleRegisterPage from "./pages/schedulePage/ScheduleRegisterPage.jsx";
+import ScheduleViewPage from "./pages/schedulePage/ScheduleViewPage.jsx";
 
 const App = () => {
   return (
@@ -17,14 +19,16 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/search" element={<SearchClubPage />} />
+        <Route path="/stdClub/register" element={<RegisterPage />} />
+        <Route path="/stdClub/search" element={<SearchClubPage />} />
         <Route path="/education/enrol" element={<EnrolEducationPage />} />
         <Route path="/education/search" element={<SearchEducationPage />} />
         <Route path="/task/register" element={<RegisterTaskPage />} />
         <Route path="/task/search" element={<SearchTaskPage />} />
         <Route path="/circle/register" element={<CircleFormPage />} />
         <Route path="/circle/search"   element={<CircleSearchPage />} />
+        <Route path="/schedule/register" element={<ScheduleRegisterPage />} />
+        <Route path="/schedule/view" element={<ScheduleViewPage />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,71 @@
+.schedule-view-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-view-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.schedule-filter-form {
+  background: #f8f8f8;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.schedule-filter-form label {
+  display: inline-block;
+  width: 100px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.schedule-filter-form input,
+.schedule-filter-form select {
+  padding: 6px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.schedule-filter-form button {
+  padding: 6px 12px;
+  margin: 10px 5px 0 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.schedule-filter-form button:hover {
+  background-color: #0056b3;
+}
+
+.schedule-calendar th, .schedule-calendar td {
+  border: 1px solid #ccc;
+  text-align: left;
+  vertical-align: top;
+  padding: 5px;
+}
+
+.schedule-calendar {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.event {
+  background-color: #cce5ff;
+  margin: 4px 0;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+}
