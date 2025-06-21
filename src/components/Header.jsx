@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const menuItems = {
   직원: [
-    { label: "직원 가입", path: "#" },
-    { label: "직원정보조회", path: "#" },
+    { label: "직원 가입", path: "/employee/register" },
+    { label: "직원정보조회", path: "/employee/search" },
   ],
   문서: [
     { label: "문서 등록", path: "#" },

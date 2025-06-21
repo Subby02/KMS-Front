@@ -12,6 +12,8 @@ import CircleSearchPage from './pages/circlePage/SearchPage';
 import Header from "./components/Header";
 import ScheduleRegisterPage from "./pages/schedulePage/ScheduleRegisterPage.jsx";
 import ScheduleViewPage from "./pages/schedulePage/ScheduleViewPage.jsx";
+import EmployeeRegisterPage from "./pages/employeePage/EmployeeRegisterPage.jsx";
+import EmployeeSearchPage from "./pages/employeePage/EmployeeSearchPage.jsx";
 
 const App = () => {
   return (
@@ -29,6 +31,8 @@ const App = () => {
         <Route path="/circle/search"   element={<CircleSearchPage />} />
         <Route path="/schedule/register" element={<ScheduleRegisterPage />} />
         <Route path="/schedule/view" element={<ScheduleViewPage />} />
+        <Route path="/employee/register" element={<EmployeeRegisterPage />} />
+        <Route path="/employee/search" element={<EmployeeSearchPage />} />
       </Routes>
     </div>
   );
