@@ -14,4 +14,3 @@ const EmployeeRegisterPage = () => {
 };
 
 export default EmployeeRegisterPage;
-
