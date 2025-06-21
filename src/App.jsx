@@ -12,8 +12,8 @@ import CircleSearchPage from './pages/circlePage/SearchPage';
 import Header from "./components/Header";
 import ScheduleRegisterPage from "./pages/schedulePage/ScheduleRegisterPage.jsx";
 import ScheduleViewPage from "./pages/schedulePage/ScheduleViewPage.jsx";
-import EmployeeRegisterPage from "./pages/employeePage/EmployeeRegisterPage.jsx";
-import EmployeeSearchPage from "./pages/employeePage/EmployeeSearchPage.jsx";
+import EmployeeRegisterPage from "./pages/employeePage/RegisterPage.jsx";
+import EmployeeSearchPage from "./pages/employeePage/SearchPage.jsx";
 
 const App = () => {
   return (
