@@ -1,5 +1,5 @@
-
 import React, { useState } from "react";
+import "../styles/EmployeeSearch.css";
 
 const EmployeeSearch = () => {
   const [query, setQuery] = useState("");
@@ -38,7 +38,7 @@ const EmployeeSearch = () => {
     }
   };
   return (
-    <>
+    <div className="employee-search-container">
       <form onSubmit={(e) => e.preventDefault()} style={styles.form}>
         <label htmlFor="query">아이디 / 이름</label>
         <input
@@ -72,7 +72,7 @@ const EmployeeSearch = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
