@@ -1,0 +1,57 @@
+/* src/styles/DocumentList.css */
+.list-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+}
+
+.list-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.list-container button {
+  display: block;
+  margin: 0 auto 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.list-container button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.doc-table th,
+.doc-table td {
+  border: 1px solid #ddd;
+  padding: 0.6rem;
+  text-align: left;
+}
+
+.doc-table th {
+  background: #f8f8f8;
+}
+
+.empty-message,
+.error-message {
+  text-align: center;
+  margin-top: 1rem;
+  color: #555;
+}
+
+.error-message {
+  color: red;
+}

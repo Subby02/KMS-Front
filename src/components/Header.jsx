@@ -7,8 +7,8 @@ const menuItems = {
     { label: "직원정보조회", path: "/employee/search" },
   ],
   문서: [
-    { label: "문서 등록", path: "#" },
-    { label: "문서 조회", path: "#" },
+    { label: "문서 등록", path: "/document/register" },
+    { label: "문서 조회", path: "/document/search" },
   ],
   일정: [
     { label: "일정 등록", path: "/schedule/register" },
