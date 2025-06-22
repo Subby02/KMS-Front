@@ -43,10 +43,30 @@ const EmployeeForm = () => {
       setShowErrorModal(true);
       return;
     }
-
-    setShowSuccessModal(true);
+    
+    // API 요청 수정 
+    fetch("http://localhost:8080/employees", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setShowSuccessModal(true);
+        } else {
+          setErrorMessage("서버 오류로 가입에 실패했습니다.");
+          setShowErrorModal(true);
+        }
+      })
+      .catch((error) => {
+        console.error("네트워크 오류:", error);
+        setErrorMessage("서버 연결 실패");
+        setShowSuccessModal(true);
+        });
   };
-
+  
   return (
     <>
       <form onSubmit={handleSubmit} className="employee-form-container">
