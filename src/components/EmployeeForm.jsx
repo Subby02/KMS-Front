@@ -63,7 +63,7 @@ const EmployeeForm = () => {
       .catch((error) => {
         console.error("네트워크 오류:", error);
         setErrorMessage("서버 연결 실패");
-        setShowSuccessModal(true);
+        setShowErrorModal(true);
         });
   };
   
