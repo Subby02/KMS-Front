@@ -1,28 +1,24 @@
 // src/components/DocumentForm.jsx
 import React, { useState, useRef } from "react";
-import "../styles/DocumentForm.css"; // CSS도 동일한 폴더 구조에 두고
+import "../styles/DocumentForm.css";
 
 const DocumentForm = ({ onRegister }) => {
-  // 1) 초기 form state
   const getInitial = () => ({
     docTitle: "",
     content: "",
   });
+
   const [formData, setFormData] = useState(getInitial());
   const [file, setFile] = useState(null);
-
-  // 2) 모달 / 로딩 상태
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  // 3) 파일 input ref (초기화 용)
   const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFileChange = (e) => {
@@ -34,7 +30,6 @@ const DocumentForm = ({ onRegister }) => {
     setIsLoading(true);
     setModalOpen(false);
 
-    // 필수 검증
     if (!formData.docTitle.trim() || !formData.content.trim() || !file) {
       setModalMessage("제목·내용·파일은 모두 필수입니다.");
       setIsSuccess(false);
@@ -43,20 +38,11 @@ const DocumentForm = ({ onRegister }) => {
       return;
     }
 
-    // FormData 구성
     const fd = new FormData();
-    fd.append(
-      "documentInfo",
-      new Blob(
-        [
-          JSON.stringify({
-            docTitle: formData.docTitle,
-            content: formData.content,
-          }),
-        ],
-        { type: "application/json" }
-      )
-    );
+    const jsonBlob = new Blob([JSON.stringify(formData)], {
+      type: "application/json",
+    });
+    fd.append("documentInfo", jsonBlob);
     fd.append("file", file);
 
     try {
@@ -64,23 +50,32 @@ const DocumentForm = ({ onRegister }) => {
         method: "POST",
         body: fd,
       });
-      const body = await res.json();
 
-      if (!res.ok) throw new Error(body.message || "등록에 실패했습니다.");
+      const raw = await res.text();
+      let body;
+      try {
+        body = JSON.parse(raw);
+      } catch {
+        body = { message: raw };
+      }
+
+      if (!res.ok) {
+        throw new Error(body.message || "문서 등록 실패");
+      }
 
       setModalMessage(body.message || "문서가 등록되었습니다.");
       setIsSuccess(true);
+
       onRegister && onRegister({ ...formData, file });
       setFormData(getInitial());
       setFile(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (err) {
-      console.error(err);
       setModalMessage(err.message);
       setIsSuccess(false);
     } finally {
-      setModalOpen(true);
       setIsLoading(false);
+      setModalOpen(true);
     }
   };
 
@@ -91,7 +86,6 @@ const DocumentForm = ({ onRegister }) => {
       <h2>문서 등록</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-grid-container">
-          {/* 왼쪽 컬럼 */}
           <div className="form-column">
             <label>문서 제목</label>
             <input
@@ -99,7 +93,6 @@ const DocumentForm = ({ onRegister }) => {
               value={formData.docTitle}
               onChange={handleChange}
             />
-
             <label>문서 내용</label>
             <textarea
               name="content"
@@ -107,8 +100,6 @@ const DocumentForm = ({ onRegister }) => {
               onChange={handleChange}
             />
           </div>
-
-          {/* 오른쪽 컬럼 */}
           <div className="form-column">
             <label>첨부 파일</label>
             <input
@@ -120,7 +111,6 @@ const DocumentForm = ({ onRegister }) => {
             {file && <p className="file-info">선택된 파일: {file.name}</p>}
           </div>
         </div>
-
         <button type="submit" className="submit-button" disabled={isLoading}>
           {isLoading ? "등록 중..." : "등록"}
         </button>
