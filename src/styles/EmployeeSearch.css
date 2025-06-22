@@ -56,3 +56,13 @@
   border-radius: 8px;
   text-align: left;
 }
+
+/*라디오 버튼 정렬 조정*/
+.search-radio-group label {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.search-radio-group label:last-child {
+  margin-left: 10px; 
+}
