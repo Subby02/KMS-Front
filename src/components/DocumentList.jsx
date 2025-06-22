@@ -11,7 +11,7 @@ export default function DocumentListPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('http://localhost:8080/documents');
+      const res = await fetch('http://localhost:8080/document');
       if (!res.ok) throw new Error('서버에서 문서 목록을 가져오지 못했습니다.');
       const data = await res.json();
       setDocs(data);

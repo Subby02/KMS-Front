@@ -60,7 +60,7 @@ const DocumentForm = ({ onRegister }) => {
     fd.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:8080/documents/register", {
+      const res = await fetch("http://localhost:8080/document/register", {
         method: "POST",
         body: fd,
       });
