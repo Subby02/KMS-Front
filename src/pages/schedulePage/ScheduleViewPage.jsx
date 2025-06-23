@@ -19,7 +19,7 @@ const ScheduleViewPage = () => {
   // ✅ 전체 일정 불러오기
   const fetchSchedules = async () => {
     try {
-      const res = await fetch('/schedule/all');
+      const res = await fetch('http://localhost:8080/schedule/all');
       const data = await res.json();
 
       if (Array.isArray(data)) {

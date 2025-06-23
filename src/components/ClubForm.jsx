@@ -24,7 +24,7 @@ const ClubForm = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/stdClub', {
+      const response = await fetch('http://localhost:8080/stdClub/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

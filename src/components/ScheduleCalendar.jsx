@@ -1,23 +1,20 @@
 // components/ScheduleCalendar.jsx
 import React, { useState } from 'react';
-import '../styles/ScheduleCalendar.css'; // 스타일 파일 경로를 적절히 수정하세요
+import '../styles/ScheduleCalendar.css';
 
 export default function ScheduleCalendar({ schedules = [], onSelect }) {
-  // ⬇️ today 기준으로 초기화
   const today = new Date();
   const [year, setYear]   = useState(today.getFullYear());
-  const [month, setMonth] = useState(today.getMonth());   // 0-based
+  const [month, setMonth] = useState(today.getMonth());
 
-  /** 이전/다음 달 이동 */
   const shiftMonth = (delta) => {
     const d = new Date(year, month + delta);
     setYear(d.getFullYear());
     setMonth(d.getMonth());
   };
 
-  /** 달력 셀 렌더 */
   const renderCells = () => {
-    const firstDay   = new Date(year, month, 1).getDay();     // 0 = Sun
+    const firstDay   = new Date(year, month, 1).getDay();
     const daysInMon  = new Date(year, month + 1, 0).getDate();
     const cells = [];
     let day = 1;
@@ -28,29 +25,28 @@ export default function ScheduleCalendar({ schedules = [], onSelect }) {
         if ((i === 0 && j < firstDay) || day > daysInMon) {
           row.push(<td key={j} className="empty" />);
         } else {
-          const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+          // ⚠️ ESLint 경고가 발생하는 줄 바로 위
+          // eslint-disable-next-line no-loop-func
           const events = schedules.filter(s => {
             const start = new Date(s.startDateTime);
             const end = new Date(s.endDateTime);
-            const current = new Date(year, month, day);
-          
-            // 하루 단위 비교를 위해 시간 제거
+            const current = new Date(year, month, day); // 'day' 참조
+
             start.setHours(0, 0, 0, 0);
             end.setHours(0, 0, 0, 0);
             current.setHours(0, 0, 0, 0);
-          
+
             return start <= current && current <= end;
           });
-          
+
           row.push(
             <td key={j} className="cell">
               <div className="date">{day}</div>
-
               {events.map(ev => (
                 <div
                   key={ev.scheduleId}
                   className="event"
-                  onClick={() => onSelect && onSelect(ev)}   // ✅ 일정 클릭
+                  onClick={() => onSelect && onSelect(ev)}
                 >
                   {ev.title}
                 </div>

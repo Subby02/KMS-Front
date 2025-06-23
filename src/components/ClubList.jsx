@@ -11,7 +11,7 @@ export default function ClubList() {
   const fetchClubs = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8080/stdClub");
+      const response = await fetch("http://localhost:8080/stdClub/search");
 
       if (response.status === 403) {
         setModalType("error");

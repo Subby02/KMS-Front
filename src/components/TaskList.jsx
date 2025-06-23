@@ -7,7 +7,7 @@ export default function TaskList() {
 
   const fetchTasks = async () => {
     try {
-      const res = await fetch("http://localhost:8080/tasks/T001");
+      const res = await fetch("http://localhost:8080/tasks/E001");
       if (!res.ok) throw new Error("서버 오류");
       const data = await res.json();
 

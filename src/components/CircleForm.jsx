@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/CircleForm.css';
 
-export default function CircleForm({ empId }) {
+export default function CircleForm() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
@@ -18,7 +18,7 @@ export default function CircleForm({ empId }) {
       const res = await fetch('http://localhost:8080/circle', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: trimmedName, description: trimmedDesc, createdBy: empId })
+        body: JSON.stringify({ name: trimmedName, description: trimmedDesc})
       });
       if (!res.ok) throw new Error();
       setModalType('success'); setModalMessage(`동호회 "${trimmedName}" 등록 완료!`);
