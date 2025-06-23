@@ -16,7 +16,7 @@ const EducationSearch = () => {
   const [searchParams, setSearchParams] = useState(initialSearchState);
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   // 1. hasSearched 상태를 완전히 제거합니다.
   // const [hasSearched, setHasSearched] = useState(false); // 이 줄 삭제
 
@@ -125,7 +125,7 @@ const EducationSearch = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="form-buttons">
           <button type="submit" disabled={isLoading}>
             {isLoading ? '검색 중...' : '검색'}
@@ -140,8 +140,9 @@ const EducationSearch = () => {
         {!isLoading && results.length > 0 && (
           <table className="results-table">
             <thead>
+              {/* 수정된 부분 시작: tr과 th 사이의 불필요한 줄 바꿈/공백 제거 */}
               <tr>
-                <th>썸네일</th> {/* 썸네일 컬럼 추가 */}
+                <th>썸네일</th>{/* 썸네일 컬럼 추가 */}
                 <th>교육 이름</th>
                 <th>유형</th>
                 <th>장소</th>
@@ -149,9 +150,11 @@ const EducationSearch = () => {
                 <th>교육 기간</th>
                 <th>담당자</th>
               </tr>
+              {/* 수정된 부분 끝 */}
             </thead>
             <tbody>
               {results.map(edu => (
+                // 수정된 부분 시작: tr과 td 사이, td와 내용 사이의 불필요한 줄 바꿈/공백 제거
                 <tr key={edu.eduId}>
                   <td>
                     {edu.thumbnailPath ? (
@@ -171,6 +174,7 @@ const EducationSearch = () => {
                   <td>{formatDate(edu.eduStartDate)} ~ {formatDate(edu.eduEndDate)}</td>
                   <td>{edu.educatorName}</td>
                 </tr>
+                // 수정된 부분 끝
               ))}
             </tbody>
           </table>
